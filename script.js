@@ -1,173 +1,217 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ========================================
-     ELEMENTE
-  ======================================== */
+  /* =========================================
+     CONFIGURARE SUPABASE
+  ========================================= */
 
-  const form = document.getElementById("rsvp-form");
+  const SUPABASE_URL =
+    "https://vovuwsuviqeigkcklbjv.supabase.co";
 
-  const adultCountInput = document.getElementById("adult-count");
-  const decreaseButton = document.getElementById("decrease-adults");
-  const increaseButton = document.getElementById("increase-adults");
-
-  const adultNamesContainer = document.getElementById("adult-names");
-
-  const childCountInput = document.getElementById("child-count");
-  const messageInput = document.getElementById("message");
-
-  const confirmButton = document.querySelector(".button-confirm");
-  const declineButton = document.querySelector(".button-decline");
-
-  const formMessage = document.getElementById("form-message");
+  const SUPABASE_KEY =
+    "sb_publishable_80Zh3VPXcPRlaZzMrQJF_w_x566T8Ux";
 
 
-  /* ========================================
-     CONFIGURARE
-  ======================================== */
+  /* =========================================
+     ELEMENTELE FORMULARULUI
+  ========================================= */
+
+  const form =
+    document.getElementById("rsvp-form");
+
+  const adultCountInput =
+    document.getElementById("adult-count");
+
+  const adultNamesContainer =
+    document.getElementById("adult-names");
+
+  const decreaseAdultsButton =
+    document.getElementById("decrease-adults");
+
+  const increaseAdultsButton =
+    document.getElementById("increase-adults");
+
+  const childCountInput =
+    document.getElementById("child-count");
+
+  const messageInput =
+    document.getElementById("message");
+
+  const confirmButton =
+    document.querySelector(".button-confirm");
+
+  const declineButton =
+    document.querySelector(".button-decline");
+
+  const formMessage =
+    document.getElementById("form-message");
+
+
+  /* =========================================
+     CONFIGURARE FORMULAR
+  ========================================= */
 
   const MIN_ADULTS = 1;
   const MAX_ADULTS = 10;
 
-  let adultCount = 1;
+  let adultCount = MIN_ADULTS;
+
+  let isSubmitting = false;
+
+  // Devine true DOAR după ce Supabase
+  // confirmă salvarea răspunsului.
+  let hasSubmitted = false;
 
 
-  /* ========================================
-     CREEAZĂ CÂMP PENTRU UN ADULT
-  ======================================== */
+  /* =========================================
+     CREAREA CÂMPURILOR PENTRU ADULȚI
+  ========================================= */
 
-  function createAdultField(number) {
+  function renderAdultFields() {
 
-    const field = document.createElement("div");
-
-    field.className = "form-field";
-    field.dataset.adult = number;
-
-
-    const label = document.createElement("label");
-
-    label.htmlFor = `adult-${number}`;
-    label.textContent = `Nume adult ${number} *`;
+    const existingValues = Array.from(
+      adultNamesContainer.querySelectorAll(
+        'input[type="text"]'
+      )
+    ).map((input) => input.value);
 
 
-    const input = document.createElement("input");
-
-    input.type = "text";
-    input.id = `adult-${number}`;
-    input.name = `adult_name_${number}`;
-
-    input.placeholder = "Nume și prenume";
-
-    input.maxLength = 100;
-    input.required = true;
-
-    input.autocomplete = "off";
+    adultNamesContainer.innerHTML = "";
 
 
-    input.addEventListener(
-      "input",
-      updateFormState
-    );
+    for (let i = 1; i <= adultCount; i++) {
+
+      const field =
+        document.createElement("div");
+
+      field.className = "form-field";
 
 
-    field.appendChild(label);
-    field.appendChild(input);
+      const label =
+        document.createElement("label");
+
+      label.setAttribute(
+        "for",
+        `adult-${i}`
+      );
+
+      label.textContent =
+        `Nume adult ${i} *`;
 
 
-    return field;
-  }
+      const input =
+        document.createElement("input");
+
+      input.type = "text";
+
+      input.id =
+        `adult-${i}`;
+
+      input.name =
+        `adult_name_${i}`;
+
+      input.placeholder =
+        "Nume și prenume";
+
+      input.maxLength = 100;
+
+      input.required = true;
 
 
-  /* ========================================
-     ACTUALIZEAZĂ CONTORUL
-  ======================================== */
+      if (existingValues[i - 1]) {
 
-  function updateCounter() {
+        input.value =
+          existingValues[i - 1];
 
-    adultCountInput.value = adultCount;
-
-
-    decreaseButton.disabled =
-      adultCount <= MIN_ADULTS;
+      }
 
 
-    increaseButton.disabled =
-      adultCount >= MAX_ADULTS;
-
-  }
-
-
-  /* ========================================
-     BUTON +
-  ======================================== */
-
-  increaseButton.addEventListener("click", () => {
-
-    if (adultCount >= MAX_ADULTS) {
-      return;
-    }
-
-
-    adultCount++;
-
-
-    const newField =
-      createAdultField(adultCount);
-
-
-    adultNamesContainer.appendChild(newField);
-
-
-    updateCounter();
-    updateFormState();
-
-
-    const newInput =
-      document.getElementById(
-        `adult-${adultCount}`
+      input.addEventListener(
+        "input",
+        updateFormState
       );
 
 
-    newInput.focus();
+      field.appendChild(label);
 
-  });
+      field.appendChild(input);
 
-
-  /* ========================================
-     BUTON -
-  ======================================== */
-
-  decreaseButton.addEventListener("click", () => {
-
-    if (adultCount <= MIN_ADULTS) {
-      return;
-    }
-
-
-    const lastField =
-      adultNamesContainer.querySelector(
-        `[data-adult="${adultCount}"]`
+      adultNamesContainer.appendChild(
+        field
       );
-
-
-    if (lastField) {
-      lastField.remove();
     }
 
 
-    adultCount--;
+    adultCountInput.value =
+      adultCount;
 
 
-    updateCounter();
+    decreaseAdultsButton.disabled =
+      adultCount <= MIN_ADULTS ||
+      hasSubmitted;
+
+
+    increaseAdultsButton.disabled =
+      adultCount >= MAX_ADULTS ||
+      hasSubmitted;
+
+
     updateFormState();
+  }
 
-  });
+
+  /* =========================================
+     BUTONUL +
+  ========================================= */
+
+  increaseAdultsButton.addEventListener(
+    "click",
+    () => {
+
+      if (
+        adultCount >= MAX_ADULTS ||
+        hasSubmitted ||
+        isSubmitting
+      ) {
+        return;
+      }
 
 
-  /* ========================================
-     VERIFICĂ NUMELE
-  ======================================== */
+      adultCount++;
 
-  function allAdultNamesCompleted() {
+      renderAdultFields();
+    }
+  );
+
+
+  /* =========================================
+     BUTONUL -
+  ========================================= */
+
+  decreaseAdultsButton.addEventListener(
+    "click",
+    () => {
+
+      if (
+        adultCount <= MIN_ADULTS ||
+        hasSubmitted ||
+        isSubmitting
+      ) {
+        return;
+      }
+
+
+      adultCount--;
+
+      renderAdultFields();
+    }
+  );
+
+
+  /* =========================================
+     CITIRE NUME ADULȚI
+  ========================================= */
+
+  function getAdultNames() {
 
     const inputs =
       adultNamesContainer.querySelectorAll(
@@ -175,67 +219,77 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
 
-    return Array
-      .from(inputs)
-      .every(
-        input =>
-          input.value.trim().length >= 2
-      );
-
+    return Array.from(inputs).map(
+      (input) => input.value.trim()
+    );
   }
 
 
-  /* ========================================
-     ACTUALIZEAZĂ BUTOANELE
-  ======================================== */
+  /* =========================================
+     VALIDARE NUME ADULȚI
+  ========================================= */
+
+  function adultNamesAreValid() {
+
+    const names =
+      getAdultNames();
+
+
+    return (
+      names.length === adultCount &&
+      names.every(
+        (name) => name.length > 0
+      )
+    );
+  }
+
+
+  /* =========================================
+     STAREA BUTOANELOR
+  ========================================= */
 
   function updateFormState() {
 
+    const valid =
+      adultNamesAreValid();
+
+
     confirmButton.disabled =
-      !allAdultNamesCompleted();
+      !valid ||
+      isSubmitting ||
+      hasSubmitted;
 
 
-    /*
-      Refuzul nu necesită completarea
-      numelor participanților.
-    */
+    declineButton.disabled =
+      !valid ||
+      isSubmitting ||
+      hasSubmitted;
 
-    declineButton.disabled = false;
 
+    decreaseAdultsButton.disabled =
+      adultCount <= MIN_ADULTS ||
+      isSubmitting ||
+      hasSubmitted;
+
+
+    increaseAdultsButton.disabled =
+      adultCount >= MAX_ADULTS ||
+      isSubmitting ||
+      hasSubmitted;
   }
 
 
-  /* ========================================
-     PRIMUL ADULT
-  ======================================== */
+  /* =========================================
+     CITIRE NUMĂR COPII
+  ========================================= */
 
-  const firstAdultInput =
-    document.getElementById("adult-1");
+  function getChildCount() {
 
-
-  if (firstAdultInput) {
-
-    firstAdultInput.addEventListener(
-      "input",
-      updateFormState
-    );
-
-  }
-
-
-  /* ========================================
-     NUMĂR COPII
-  ======================================== */
-
-  childCountInput.addEventListener("input", () => {
-
-    if (childCountInput.value === "") {
-      return;
-    }
-
-
-    let value =
-      parseInt(childCountInput.value, 10);
+    const value =
+      parseInt(
+        childCountInput.value,
+        10
+      );
 
 
     if (
@@ -243,122 +297,367 @@ document.addEventListener("DOMContentLoaded", () => {
       value < 0
     ) {
 
-      value = 0;
+      return 0;
 
     }
 
 
-    childCountInput.value = value;
+    return value;
+  }
 
-  });
+
+  /* =========================================
+     CONSTRUIREA RĂSPUNSULUI
+  ========================================= */
+
+  function buildResponse(attendance) {
+
+    return {
+
+      attendance: attendance,
+
+      adult_count: adultCount,
+
+      adults: getAdultNames(),
+
+      child_count: getChildCount(),
+
+      message:
+        messageInput.value.trim()
+
+    };
+  }
 
 
-  /* ========================================
-     CONFIRMARE PREZENȚĂ
-  ======================================== */
+  /* =========================================
+     TRIMITERE CĂTRE SUPABASE
+  ========================================= */
 
-  confirmButton.addEventListener("click", () => {
+  async function sendToSupabase(response) {
 
-    if (!allAdultNamesCompleted()) {
+    const request = await fetch(
+      `${SUPABASE_URL}/rest/v1/rsvp`,
+      {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type":
+            "application/json",
+
+          "apikey":
+            SUPABASE_KEY,
+
+          "Authorization":
+            `Bearer ${SUPABASE_KEY}`,
+
+          "Prefer":
+            "return=minimal"
+        },
+
+        body:
+          JSON.stringify(response)
+
+      }
+    );
+
+
+    if (!request.ok) {
+
+      let errorMessage =
+        `Eroare Supabase: ${request.status}`;
+
+
+      try {
+
+        const error =
+          await request.json();
+
+
+        console.error(
+          "Eroare Supabase:",
+          error
+        );
+
+
+        if (error.message) {
+
+          errorMessage =
+            error.message;
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+      }
+
+
+      throw new Error(
+        errorMessage
+      );
+    }
+
+
+    return true;
+  }
+
+
+  /* =========================================
+     BLOCARE FORMULAR DUPĂ SUCCES
+  ========================================= */
+
+  function lockForm() {
+
+    const inputs =
+      form.querySelectorAll(
+        "input, textarea"
+      );
+
+
+    inputs.forEach(
+      (input) => {
+
+        input.disabled = true;
+
+      }
+    );
+
+
+    confirmButton.disabled = true;
+
+    declineButton.disabled = true;
+
+    increaseAdultsButton.disabled = true;
+
+    decreaseAdultsButton.disabled = true;
+  }
+
+
+  /* =========================================
+     TRIMITEREA RSVP-ULUI
+  ========================================= */
+
+  async function submitRSVP(attendance) {
+
+    // Previne click dublu și retrimiterea
+    if (
+      isSubmitting ||
+      hasSubmitted
+    ) {
       return;
     }
 
 
-    const adultInputs =
-      adultNamesContainer.querySelectorAll(
-        'input[type="text"]'
+    /* -------------------------
+       VALIDARE NUME
+    ------------------------- */
+
+    if (!adultNamesAreValid()) {
+
+      formMessage.textContent =
+        "Te rugăm să completezi numele tuturor adulților.";
+
+      return;
+    }
+
+
+    /* -------------------------
+       VALIDARE COPII
+    ------------------------- */
+
+    if (
+      childCountInput.value !== "" &&
+      (
+        Number.isNaN(
+          Number(childCountInput.value)
+        ) ||
+        Number(childCountInput.value) < 0
+      )
+    ) {
+
+      formMessage.textContent =
+        "Numărul de copii nu este valid.";
+
+      return;
+    }
+
+
+    const response =
+      buildResponse(attendance);
+
+
+    console.log(
+      attendance
+        ? "CONFIRMARE:"
+        : "NU PARTICIPĂ:",
+      response
+    );
+
+
+    /* -------------------------
+       ÎNCEPE TRIMITEREA
+    ------------------------- */
+
+    isSubmitting = true;
+
+    updateFormState();
+
+
+    formMessage.textContent =
+      "Se trimite răspunsul...";
+
+
+    try {
+
+      /* -------------------------
+         SUPABASE
+      ------------------------- */
+
+      await sendToSupabase(
+        response
       );
 
 
-    const adults =
-      Array
-        .from(adultInputs)
-        .map(
-          input =>
-            input.value.trim()
-        );
+      /* -------------------------
+         SUCCES
+      ------------------------- */
+
+      hasSubmitted = true;
 
 
-    const response = {
+      if (attendance) {
 
-      attendance: true,
+        formMessage.textContent =
+          "Mulțumim! Prezența a fost confirmată. 🤍";
 
-      adultCount: adultCount,
+      } else {
 
-      adults: adults,
+        formMessage.textContent =
+          "Mulțumim că ne-ai anunțat. 🤍";
 
-      childCount:
-        Number(childCountInput.value) || 0,
-
-      message:
-        messageInput.value.trim(),
-
-      submittedAt:
-        new Date().toISOString()
-
-    };
+      }
 
 
-    console.log(
-      "CONFIRMARE:",
-      response
-    );
+      console.log(
+        "RSVP salvat cu succes în Supabase."
+      );
 
 
-    formMessage.textContent =
-      "Mulțumim! Confirmarea este pregătită pentru trimitere.";
+      /* -------------------------
+         BLOCĂM FORMULARUL
+      ------------------------- */
 
-  });
-
-
-  /* ========================================
-     NU POATE PARTICIPA
-  ======================================== */
-
-  declineButton.addEventListener("click", () => {
-
-    const response = {
-
-      attendance: false,
-
-      message:
-        messageInput.value.trim(),
-
-      submittedAt:
-        new Date().toISOString()
-
-    };
+      lockForm();
 
 
-    console.log(
-      "NU PARTICIPĂ:",
-      response
-    );
+    } catch (error) {
+
+      /* -------------------------
+         EROARE
+      ------------------------- */
+
+      console.error(
+        "Trimiterea RSVP a eșuat:",
+        error
+      );
 
 
-    formMessage.textContent =
-      "Mulțumim că ne-ai anunțat.";
-
-  });
+      formMessage.textContent =
+        "Răspunsul nu a putut fi trimis. Te rugăm să încerci din nou.";
 
 
-  /* ========================================
-     PREVENIM TRIMITEREA REALĂ
-     PÂNĂ AVEM BACKEND
-  ======================================== */
+    } finally {
 
-  form.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-  });
+      isSubmitting = false;
 
 
-  /* ========================================
-     STAREA INIȚIALĂ
-  ======================================== */
+      // Reactivăm formularul doar dacă
+      // NU s-a trimis cu succes.
+      if (!hasSubmitted) {
 
-  updateCounter();
+        updateFormState();
+
+      }
+    }
+  }
+
+
+  /* =========================================
+     CONFIRM PREZENȚA
+  ========================================= */
+
+  confirmButton.addEventListener(
+    "click",
+    async (event) => {
+
+      event.preventDefault();
+
+      await submitRSVP(true);
+
+    }
+  );
+
+
+  /* =========================================
+     NU POT PARTICIPA
+  ========================================= */
+
+  declineButton.addEventListener(
+    "click",
+    async (event) => {
+
+      event.preventDefault();
+
+      await submitRSVP(false);
+
+    }
+  );
+
+
+  /* =========================================
+     PREVENIM SUBMIT-UL STANDARD HTML
+  ========================================= */
+
+  form.addEventListener(
+    "submit",
+    (event) => {
+
+      event.preventDefault();
+
+    }
+  );
+
+
+  /* =========================================
+     VALIDARE NUMĂR COPII
+  ========================================= */
+
+  childCountInput.addEventListener(
+    "input",
+    () => {
+
+      if (
+        childCountInput.value !== "" &&
+        Number(childCountInput.value) < 0
+      ) {
+
+        childCountInput.value = 0;
+
+      }
+
+    }
+  );
+
+
+  /* =========================================
+     PORNIRE
+  ========================================= */
+
+  renderAdultFields();
+
   updateFormState();
 
 });
