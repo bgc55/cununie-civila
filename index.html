@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ana & Cătălin | Cununia Civilă</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <main>
+
+    <!-- HERO -->
+    <header class="hero">
+
+      <img
+        class="hero-photo"
+        src="images/2.jpg"
+        alt="Ana și Cătălin"
+      >
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+
+        <p class="hero-eyebrow">
+          Cununia noastră civilă
+        </p>
+
+        <h1>
+          Ana
+          <span class="ampersand">&amp;</span>
+          Cătălin
+        </h1>
+
+        <p class="hero-date">
+          05 · 06 · 2027
+        </p>
+
+        <a
+          class="scroll-indicator"
+          href="#invitation"
+          aria-label="Continuă către invitație"
+        >
+          <span>Descoperă</span>
+          <span class="arrow">↓</span>
+        </a>
+
+      </div>
+
+    </header>
+
+
+    <!-- INTRODUCERE -->
+    <section
+      class="invitation-section"
+      id="invitation"
+    >
+
+      <p class="section-eyebrow">
+        Împreună
+      </p>
+
+      <h2>
+        O zi specială pentru noi
+      </h2>
+
+      <p class="invitation-text">
+        Cu bucurie, vă invităm să ne fiți alături
+        într-unul dintre cele mai frumoase momente
+        din povestea noastră.
+      </p>
+
+      <div class="small-divider">
+        <span></span>
+      </div>
+
+      <p class="event-date-large">
+        05 Iunie 2027
+      </p>
+
+    </section>
+
+
+    <!-- FOTOGRAFIE APUS -->
+    <section class="photo-break">
+
+      <img
+        src="images/1.jpg"
+        alt="Ana și Cătălin la apus"
+      >
+
+      <div class="photo-break-overlay"></div>
+
+      <div class="photo-break-text">
+        <p>
+          Și de aici începe<br>
+          următorul nostru capitol.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- DETALII EVENIMENT -->
+    <section
+      class="event-details"
+      aria-labelledby="details-title"
+    >
+
+      <p class="section-eyebrow">
+        05 · 06 · 2027
+      </p>
+
+      <h2 id="details-title">
+        Cununia civilă
+      </h2>
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Data
+          </span>
+
+          <p>
+            05 Iunie 2027
+          </p>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Ora
+          </span>
+
+          <p>
+            Ora evenimentului
+          </p>
+
+        </div>
+
+        <div class="detail-item">
+
+          <span class="detail-label">
+            Locația
+          </span>
+
+          <p>
+            Numele locației
+          </p>
+
+          <span class="detail-address">
+            Adresa locației
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GALERIE -->
+    <section class="story-gallery">
+
+      <div class="gallery-heading">
+
+        <p class="section-eyebrow">
+          Noi doi
+        </p>
+
+        <h2>
+          Câteva momente din povestea noastră
+        </h2>
+
+      </div>
+
+
+      <div class="gallery-layout">
+
+        <!-- POZA 3 -->
+        <figure class="gallery-photo gallery-photo-1">
+
+          <img
+            src="images/3.jpg"
+            alt="Ana și Cătălin împreună"
+            loading="lazy"
+          >
+
+        </figure>
+
+
+        <!-- POZA 4 -->
+        <figure class="gallery-photo gallery-photo-2">
+
+          <img
+            src="images/4.jpg"
+            alt="Un moment din călătoriile noastre"
+            loading="lazy"
+          >
+
+        </figure>
+
+
+        <!-- TEXT CENTRAL -->
+        <div class="gallery-quote">
+
+          <span class="quote-line"></span>
+
+          <p>
+            Din toate locurile,<br>
+            mereu împreună.
+          </p>
+
+          <span class="quote-line"></span>
+
+        </div>
+
+
+        <!-- POZA 5 -->
+        <figure class="gallery-photo gallery-photo-3">
+
+          <img
+            src="images/5.jpg"
+            alt="Ana și Cătălin într-o călătorie"
+            loading="lazy"
+          >
+
+        </figure>
+
+
+        <!-- POZA 6 -->
+        <figure class="gallery-photo gallery-photo-4">
+
+          <img
+            src="images/6.jpg"
+            alt="Ana și Cătălin într-un moment special"
+            loading="lazy"
+          >
+
+        </figure>
+
+      </div>
+
+    </section>
+
+
+    <!-- RSVP -->
+    <section
+      class="rsvp"
+      aria-labelledby="rsvp-title"
+    >
+
+      <p class="section-eyebrow">
+        RSVP
+      </p>
+
+      <h2 id="rsvp-title">
+        Ne vei fi alături?
+      </h2>
+
+      <p class="rsvp-description">
+        Te rugăm să ne confirmi participarea.
+      </p>
+
+
+      <form id="rsvp-form">
+
+        <!-- NUMĂR ADULȚI -->
+        <div class="form-field">
+
+          <label for="adult-count">
+            Număr adulți
+          </label>
+
+          <div class="number-stepper">
+
+            <button
+              type="button"
+              id="decrease-adults"
+              aria-label="Scade numărul de adulți"
+              disabled
+            >
+              −
+            </button>
+
+            <input
+              type="number"
+              id="adult-count"
+              name="adult_count"
+              value="1"
+              min="1"
+              step="1"
+              readonly
+            >
+
+            <button
+              type="button"
+              id="increase-adults"
+              aria-label="Crește numărul de adulți"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- NUMELE ADULȚILOR -->
+        <div id="adult-names">
+
+          <div class="form-field">
+
+            <label for="adult-1">
+              Nume adult 1 *
+            </label>
+
+            <input
+              type="text"
+              id="adult-1"
+              name="adult_name_1"
+              placeholder="Nume și prenume"
+              autocomplete="name"
+              maxlength="100"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- COPII -->
+        <div class="form-field">
+
+          <label for="child-count">
+            Număr copii (opțional)
+          </label>
+
+          <input
+            type="number"
+            id="child-count"
+            name="child_count"
+            placeholder="0"
+            min="0"
+            step="1"
+          >
+
+        </div>
+
+
+        <!-- MESAJ -->
+        <div class="form-field">
+
+          <label for="message">
+            Mesaj (opțional)
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            maxlength="2000"
+            placeholder="Lasă-ne câteva gânduri..."
+          ></textarea>
+
+        </div>
+
+
+        <!-- BUTOANE -->
+        <div class="rsvp-actions">
+
+          <button
+            type="submit"
+            name="attendance"
+            value="yes"
+            class="button-confirm"
+            disabled
+          >
+            Confirm prezența
+          </button>
+
+          <button
+            type="submit"
+            name="attendance"
+            value="no"
+            class="button-decline"
+            disabled
+          >
+            Nu pot participa
+          </button>
+
+        </div>
+
+        <p
+          id="form-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+      <p class="footer-names">
+        Ana &amp; Cătălin
+      </p>
+
+      <p>
+        Abia așteptăm să sărbătorim împreună!
+      </p>
+
+      <span>
+        05 · 06 · 2027
+      </span>
+
+    </footer>
+
+  </main>
+
+</body>
+
+</html>
