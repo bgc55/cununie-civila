@@ -1,74 +1,41 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ana & Cătălin | Cununia Civilă</title>
+  <title>Ana &amp; Cătălin | Cununia Civilă</title>
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 
 <body>
-
   <main>
 
-    <!-- HERO -->
     <header class="hero">
-
-      <img
-        class="hero-photo"
-        src="images/2.jpg"
-        alt="Ana și Cătălin"
-      >
-
+      <img class="hero-photo" src="images/2.jpg" alt="Ana și Cătălin">
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-
-        <p class="hero-eyebrow">
-          Cununia noastră civilă
-        </p>
+        <p class="hero-eyebrow">Cununia noastră civilă</p>
 
         <h1>
-          Ana
-          <span class="ampersand">&amp;</span>
-          Cătălin
+          Ana <span class="ampersand">&amp;</span> Cătălin
         </h1>
 
-        <p class="hero-date">
-          05 · 06 · 2027
-        </p>
+        <p class="hero-date">05 · 06 · 2027</p>
 
-        <a
-          class="scroll-indicator"
-          href="#invitation"
-          aria-label="Continuă către invitație"
-        >
+        <a class="scroll-indicator" href="#invitation">
           <span>Descoperă</span>
-          <span class="arrow">↓</span>
+          <span class="arrow" aria-hidden="true">↓</span>
         </a>
-
       </div>
-
     </header>
 
-
-    <!-- INTRODUCERE -->
-    <section
-      class="invitation-section"
-      id="invitation"
-    >
-
-      <p class="section-eyebrow">
-        Împreună
-      </p>
-
-      <h2>
-        O zi specială pentru noi
-      </h2>
+    <section class="invitation-section" id="invitation">
+      <p class="section-eyebrow">Împreună</p>
+      <h2>O zi specială pentru noi</h2>
 
       <p class="invitation-text">
         Cu bucurie, vă invităm să ne fiți alături
@@ -76,23 +43,15 @@
         din povestea noastră.
       </p>
 
-      <div class="small-divider">
-        <span></span>
-      </div>
-
-      <p class="event-date-large">
-        05 Iunie 2027
-      </p>
-
+      <div class="small-divider" aria-hidden="true"></div>
+      <p class="event-date-large">05 Iunie 2027</p>
     </section>
 
-
-    <!-- FOTOGRAFIE APUS -->
-    <section class="photo-break">
-
+    <section class="photo-break" aria-label="Următorul nostru capitol">
       <img
         src="images/1.jpg"
         alt="Ana și Cătălin la apus"
+        loading="lazy"
       >
 
       <div class="photo-break-overlay"></div>
@@ -103,194 +62,159 @@
           următorul nostru capitol.
         </p>
       </div>
-
     </section>
 
+    <section class="event-details" aria-labelledby="details-title">
+      <h2 id="details-title">Cununia civilă</h2>
 
-    <!-- DETALII EVENIMENT -->
-    <section
-      class="event-details"
-      aria-labelledby="details-title"
-    >
+      <div class="event-layout">
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-label">Data</span>
+            <p>05 Iunie 2027</p>
+          </div>
 
-      <p class="section-eyebrow">
-        05 · 06 · 2027
-      </p>
+          <div class="detail-item">
+            <span class="detail-label">Ora</span>
+            <p>Urmează să o anunțăm</p>
+          </div>
 
-      <h2 id="details-title">
-        Cununia civilă
-      </h2>
+          <div class="detail-item detail-location">
+            <span class="detail-label">Locația</span>
+            <p>Sânbotin, jud. Vâlcea</p>
 
-      <div class="details-grid">
-
-        <div class="detail-item">
-
-          <span class="detail-label">
-            Data
-          </span>
-
-          <p>
-            05 Iunie 2027
-          </p>
-
+            <a
+              class="map-link"
+              href="https://www.google.com/maps/search/?api=1&amp;query=45.18308794609638%2C24.392740307257537"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Deschide în Google Maps ↗
+            </a>
+          </div>
         </div>
 
-        <div class="detail-item">
-
-          <span class="detail-label">
-            Ora
-          </span>
-
-          <p>
-            Ora evenimentului
-          </p>
-
+        <div class="event-map">
+          <iframe
+            title="Harta locației evenimentului"
+            src="https://www.google.com/maps?q=45.18308794609638,24.392740307257537&amp;z=16&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
         </div>
-
-        <div class="detail-item">
-
-          <span class="detail-label">
-            Locația
-          </span>
-
-          <p>
-            Numele locației
-          </p>
-
-          <span class="detail-address">
-            Adresa locației
-          </span>
-
-        </div>
-
       </div>
-
     </section>
 
-
-    <!-- GALERIE -->
-    <section class="story-gallery">
-
+    <!-- SLIDER -->
+    <section class="story-gallery" aria-labelledby="gallery-title">
       <div class="gallery-heading">
+        <p class="section-eyebrow">Noi doi</p>
 
-        <p class="section-eyebrow">
-          Noi doi
-        </p>
-
-        <h2>
+        <h2 id="gallery-title">
           Câteva momente din povestea noastră
         </h2>
-
       </div>
 
+      <div
+        id="couple-slider"
+        class="photo-carousel"
+        role="region"
+        aria-roledescription="carusel"
+        aria-label="Fotografiile noastre"
+      >
+        <div
+          id="slider-viewport"
+          class="carousel-viewport"
+          tabindex="0"
+          aria-label="Folosește săgețile sau glisează pentru a schimba fotografia. Space oprește sau pornește schimbarea automată."
+        >
+          <div id="slider-track" class="carousel-track">
+            <div class="carousel-slide">
+              <img
+                src="images/3.jpg"
+                alt="Ana și Cătălin împreună"
+                loading="lazy"
+                draggable="false"
+              >
+            </div>
 
-      <div class="gallery-layout">
+            <div class="carousel-slide">
+              <img
+                src="images/4.jpg"
+                alt="Un moment din călătoriile noastre"
+                loading="lazy"
+                draggable="false"
+              >
+            </div>
 
-        <!-- POZA 3 -->
-        <figure class="gallery-photo gallery-photo-1">
+            <div class="carousel-slide">
+              <img
+                src="images/5.jpg"
+                alt="Ana și Cătălin într-o călătorie"
+                loading="lazy"
+                draggable="false"
+              >
+            </div>
 
-          <img
-            src="images/3.jpg"
-            alt="Ana și Cătălin împreună"
-            loading="lazy"
-          >
-
-        </figure>
-
-
-        <!-- POZA 4 -->
-        <figure class="gallery-photo gallery-photo-2">
-
-          <img
-            src="images/4.jpg"
-            alt="Un moment din călătoriile noastre"
-            loading="lazy"
-          >
-
-        </figure>
-
-
-        <!-- TEXT CENTRAL -->
-        <div class="gallery-quote">
-
-          <span class="quote-line"></span>
-
-          <p>
-            Din toate locurile,<br>
-            mereu împreună.
-          </p>
-
-          <span class="quote-line"></span>
-
+            <div class="carousel-slide">
+              <img
+                src="images/6.jpg"
+                alt="Ana și Cătălin într-un moment special"
+                loading="lazy"
+                draggable="false"
+              >
+            </div>
+          </div>
         </div>
 
+        <button
+          id="slider-prev"
+          class="slider-arrow slider-arrow-prev"
+          type="button"
+          aria-label="Fotografia precedentă"
+          aria-controls="slider-track"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.5 5 7.5 12l7 7"></path>
+          </svg>
+        </button>
 
-        <!-- POZA 5 -->
-        <figure class="gallery-photo gallery-photo-3">
+        <button
+          id="slider-next"
+          class="slider-arrow slider-arrow-next"
+          type="button"
+          aria-label="Fotografia următoare"
+          aria-controls="slider-track"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9.5 5 7 7-7 7"></path>
+          </svg>
+        </button>
 
-          <img
-            src="images/5.jpg"
-            alt="Ana și Cătălin într-o călătorie"
-            loading="lazy"
-          >
-
-        </figure>
-
-
-        <!-- POZA 6 -->
-        <figure class="gallery-photo gallery-photo-4">
-
-          <img
-            src="images/6.jpg"
-            alt="Ana și Cătălin într-un moment special"
-            loading="lazy"
-          >
-
-        </figure>
-
+        <div id="slider-dots" class="slider-dots"></div>
       </div>
-
     </section>
 
-
-    <!-- RSVP -->
-    <section
-      class="rsvp"
-      aria-labelledby="rsvp-title"
-    >
-
-      <p class="section-eyebrow">
-        RSVP
-      </p>
-
-      <h2 id="rsvp-title">
-        Ne vei fi alături?
-      </h2>
+    <!-- FORMULAR -->
+    <section class="rsvp" id="rsvp" aria-labelledby="rsvp-title">
+      <h2 id="rsvp-title">Ne vei fi alături?</h2>
 
       <p class="rsvp-description">
         Te rugăm să ne confirmi participarea.
       </p>
 
-
       <form id="rsvp-form">
-
-        <!-- NUMĂR ADULȚI -->
         <div class="form-field">
-
-          <label for="adult-count">
-            Număr adulți
-          </label>
+          <label for="adult-count">Număr adulți</label>
 
           <div class="number-stepper">
-
             <button
               type="button"
               id="decrease-adults"
               aria-label="Scade numărul de adulți"
               disabled
-            >
-              −
-            </button>
+            >−</button>
 
             <input
               type="number"
@@ -298,6 +222,7 @@
               name="adult_count"
               value="1"
               min="1"
+              max="10"
               step="1"
               readonly
             >
@@ -306,23 +231,13 @@
               type="button"
               id="increase-adults"
               aria-label="Crește numărul de adulți"
-            >
-              +
-            </button>
-
+            >+</button>
           </div>
-
         </div>
 
-
-        <!-- NUMELE ADULȚILOR -->
         <div id="adult-names">
-
           <div class="form-field">
-
-            <label for="adult-1">
-              Nume adult 1 *
-            </label>
+            <label for="adult-1">Nume adult 1 *</label>
 
             <input
               type="text"
@@ -333,18 +248,11 @@
               maxlength="100"
               required
             >
-
           </div>
-
         </div>
 
-
-        <!-- COPII -->
         <div class="form-field">
-
-          <label for="child-count">
-            Număr copii (opțional)
-          </label>
+          <label for="child-count">Număr copii (opțional)</label>
 
           <input
             type="number"
@@ -354,16 +262,10 @@
             min="0"
             step="1"
           >
-
         </div>
 
-
-        <!-- MESAJ -->
         <div class="form-field">
-
-          <label for="message">
-            Mesaj (opțional)
-          </label>
+          <label for="message">Mesaj (opțional)</label>
 
           <textarea
             id="message"
@@ -372,22 +274,16 @@
             maxlength="2000"
             placeholder="Lasă-ne câteva gânduri..."
           ></textarea>
-
         </div>
 
-
-        <!-- BUTOANE -->
         <div class="rsvp-actions">
-
           <button
             type="submit"
             name="attendance"
             value="yes"
             class="button-confirm"
             disabled
-          >
-            Confirm prezența
-          </button>
+          >Confirm prezența</button>
 
           <button
             type="submit"
@@ -395,42 +291,19 @@
             value="no"
             class="button-decline"
             disabled
-          >
-            Nu pot participa
-          </button>
-
+          >Nu pot participa</button>
         </div>
 
-        <p
-          id="form-message"
-          role="status"
-          aria-live="polite"
-        ></p>
-
+        <p id="form-message" role="status" aria-live="polite"></p>
       </form>
-
     </section>
 
-
-    <!-- FOOTER -->
     <footer>
-
-      <p class="footer-names">
-        Ana &amp; Cătălin
-      </p>
-
-      <p>
-        Abia așteptăm să sărbătorim împreună!
-      </p>
-
-      <span>
-        05 · 06 · 2027
-      </span>
-
+      <p class="footer-names">Ana &amp; Cătălin</p>
+      <p>Abia așteptăm să sărbătorim împreună!</p>
+      <span>05 · 06 · 2027</span>
     </footer>
 
   </main>
-
 </body>
-
 </html>

@@ -1,27 +1,14 @@
-/* ========================================
-   CULORI
-======================================== */
-
 :root {
   --background: #f3f7fa;
   --background-soft: #eaf3f9;
-
   --white: #ffffff;
-
   --blue-light: #dcecf7;
   --blue: #a9cbe3;
   --blue-dark: #355a73;
-
   --text: #344957;
   --text-muted: #6b7d89;
-
   --border: #d3e1ea;
 }
-
-
-/* ========================================
-   RESET
-======================================== */
 
 * {
   box-sizing: border-box;
@@ -33,685 +20,10 @@ html {
 
 body {
   margin: 0;
-
   background: var(--background);
   color: var(--text);
-
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
-}
-
-main {
-  width: 100%;
-}
-
-
-/* ========================================
-   HERO
-======================================== */
-
-.hero {
-  position: relative;
-
-  width: 100%;
-
-  height: 100svh;
-  min-height: 650px;
-  max-height: 1000px;
-
-  overflow: hidden;
-
-  background: #1d252a;
-}
-
-.hero-photo {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center 36%;
-}
-
-.hero-overlay {
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgb(15 25 32 / 6%) 0%,
-      rgb(15 25 32 / 3%) 35%,
-      rgb(15 25 32 / 12%) 55%,
-      rgb(15 25 32 / 58%) 100%
-    );
-}
-
-.hero-content {
-  position: relative;
-
-  z-index: 2;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-
-  width: 100%;
-  height: 100%;
-
-  padding: 60px 30px 65px;
-
-  color: white;
-  text-align: center;
-}
-
-.hero-eyebrow {
-  margin: 0 0 14px;
-
-  font-size: 11px;
-  font-weight: 500;
-
-  letter-spacing: 5px;
-
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  margin: 0;
-
-  color: white;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(52px, 6vw, 86px);
-
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: -2px;
-
-  text-shadow:
-    0 2px 20px
-    rgb(0 0 0 / 12%);
-}
-
-.ampersand {
-  display: inline-block;
-
-  margin: 0 8px;
-
-  font-style: italic;
-
-  font-size: 0.8em;
-
-  font-weight: 400;
-}
-
-.hero-date {
-  margin: 23px 0 0;
-
-  font-size: 13px;
-
-  font-weight: 500;
-
-  letter-spacing: 6px;
-}
-
-
-/* ========================================
-   DESCOPERĂ
-======================================== */
-
-.scroll-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 5px;
-
-  margin-top: 36px;
-
-  color: white;
-
-  font-size: 9px;
-
-  letter-spacing: 3px;
-
-  text-decoration: none;
-  text-transform: uppercase;
-
-  opacity: 0.85;
-
-  transition:
-    opacity 0.3s ease;
-}
-
-.scroll-indicator:hover {
-  opacity: 1;
-}
-
-.scroll-indicator .arrow {
-  font-size: 22px;
-
-  line-height: 1;
-
-  animation:
-    arrowMove
-    2s
-    ease-in-out
-    infinite;
-}
-
-@keyframes arrowMove {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(6px);
-  }
-}
-
-
-/* ========================================
-   TITLURI GENERALE
-======================================== */
-
-h2 {
-  margin: 0;
-
-  color: var(--blue-dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(30px, 4vw, 42px);
-
-  font-weight: 400;
-
-  line-height: 1.25;
-}
-
-.section-eyebrow {
-  margin: 0 0 12px;
-
-  color: var(--blue-dark);
-
-  font-size: 10px;
-
-  font-weight: 600;
-
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
-}
-
-
-/* ========================================
-   INTRODUCERE
-======================================== */
-
-.invitation-section {
-  width: min(calc(100% - 40px), 700px);
-
-  margin: 0 auto;
-
-  padding:
-    100px
-    20px
-    90px;
-
-  text-align: center;
-}
-
-.invitation-text {
-  max-width: 540px;
-
-  margin:
-    26px
-    auto
-    32px;
-
-  color: var(--text-muted);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 19px;
-
-  line-height: 1.8;
-}
-
-.small-divider {
-  display: flex;
-
-  justify-content: center;
-
-  margin: 34px 0;
-}
-
-.small-divider span {
-  display: block;
-
-  width: 45px;
-  height: 1px;
-
-  background: var(--blue);
-}
-
-.event-date-large {
-  margin: 0;
-
-  color: var(--blue-dark);
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
-}
-
-
-/* ========================================
-   FOTOGRAFIE APUS
-======================================== */
-
-.photo-break {
-  position: relative;
-
-  width: min(calc(100% - 80px), 1250px);
-  height: 720px;
-
-  margin: 0 auto 100px;
-
-  overflow: hidden;
-
-  border-radius: 4px;
-}
-
-.photo-break img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center 58%;
-}
-
-.photo-break-overlay {
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgb(15 25 32 / 5%) 0%,
-      rgb(15 25 32 / 12%) 55%,
-      rgb(15 25 32 / 38%) 100%
-    );
-}
-
-.photo-break-text {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 55px;
-
-  padding: 0 30px;
-
-  color: white;
-
-  text-align: center;
-}
-
-.photo-break-text p {
-  margin: 0;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(27px, 3vw, 42px);
-
-  font-style: italic;
-
-  line-height: 1.35;
-
-  text-shadow:
-    0 2px 15px
-    rgb(0 0 0 / 20%);
-}
-
-
-/* ========================================
-   DETALII EVENIMENT
-======================================== */
-
-.event-details {
-  width: 100%;
-
-  padding:
-    85px
-    30px;
-
-  background: var(--background-soft);
-
-  text-align: center;
-}
-
-.event-details > .section-eyebrow {
-  margin-bottom: 10px;
-}
-
-.event-details > h2 {
-  margin-bottom: 55px;
-}
-
-.details-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  width: min(100%, 900px);
-
-  margin: 0 auto;
-}
-
-.detail-item {
-  padding:
-    5px
-    35px;
-}
-
-.detail-item + .detail-item {
-  border-left:
-    1px solid
-    var(--border);
-}
-
-.detail-label {
-  display: block;
-
-  margin-bottom: 10px;
-
-  color: var(--text-muted);
-
-  font-size: 9px;
-
-  font-weight: 600;
-
-  letter-spacing: 3px;
-
-  text-transform: uppercase;
-}
-
-.detail-item p {
-  margin: 0;
-
-  color: var(--blue-dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 18px;
-}
-
-.detail-address {
-  display: block;
-
-  margin-top: 5px;
-
-  color: var(--text-muted);
-
-  font-size: 13px;
-}
-
-
-/* ========================================
-   GALERIE / POVESTEA NOASTRĂ
-======================================== */
-
-.story-gallery {
-  width: min(calc(100% - 60px), 1150px);
-
-  margin: 0 auto;
-
-  padding:
-    120px
-    0
-    130px;
-}
-
-.gallery-heading {
-  max-width: 600px;
-
-  margin:
-    0
-    auto
-    75px;
-
-  text-align: center;
-}
-
-.gallery-layout {
-  display: grid;
-
-  grid-template-columns:
-    repeat(12, 1fr);
-
-  gap:
-    45px
-    28px;
-
-  align-items: center;
-}
-
-.gallery-photo {
-  margin: 0;
-
-  overflow: hidden;
-
-  background: var(--blue-light);
-}
-
-.gallery-photo img {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform 0.8s ease;
-}
-
-.gallery-photo:hover img {
-  transform: scale(1.025);
-}
-
-
-/* Fotografia 3 */
-
-.gallery-photo-1 {
-  grid-column: 1 / span 7;
-
-  height: 650px;
-}
-
-.gallery-photo-1 img {
-  object-position: center center;
-}
-
-
-/* Fotografia 4 */
-
-.gallery-photo-2 {
-  grid-column: 9 / span 4;
-
-  height: 470px;
-
-  margin-top: 90px;
-}
-
-.gallery-photo-2 img {
-  object-position: center center;
-}
-
-
-/* Text central */
-
-.gallery-quote {
-  grid-column: 3 / span 8;
-
-  padding:
-    55px
-    20px;
-
-  text-align: center;
-}
-
-.gallery-quote p {
-  margin:
-    24px
-    0;
-
-  color: var(--blue-dark);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(26px, 3vw, 38px);
-
-  font-style: italic;
-
-  line-height: 1.45;
-}
-
-.quote-line {
-  display: block;
-
-  width: 40px;
-  height: 1px;
-
-  margin: 0 auto;
-
-  background: var(--blue);
-}
-
-
-/* Fotografia 5 */
-
-.gallery-photo-3 {
-  grid-column: 2 / span 4;
-
-  height: 470px;
-}
-
-.gallery-photo-3 img {
-  object-position: center center;
-}
-
-
-/* Fotografia 6 */
-
-.gallery-photo-4 {
-  grid-column: 7 / span 6;
-
-  height: 600px;
-
-  margin-top: 70px;
-}
-
-.gallery-photo-4 img {
-  object-position: center center;
-}
-
-
-/* ========================================
-   RSVP
-======================================== */
-
-.rsvp {
-  width: min(calc(100% - 40px), 580px);
-
-  margin:
-    20px
-    auto
-    100px;
-
-  padding: 48px;
-
-  background: var(--white);
-
-  border:
-    1px solid
-    var(--border);
-
-  border-radius: 24px;
-
-  box-shadow:
-    0 20px 60px
-    rgb(54 92 122 / 8%);
-}
-
-.rsvp > h2,
-.rsvp > p {
-  text-align: center;
-}
-
-.rsvp-description {
-  margin:
-    12px
-    0
-    35px;
-
-  color: var(--text-muted);
-}
-
-
-/* ========================================
-   FORMULAR
-======================================== */
-
-.form-field {
-  margin-bottom: 22px;
-}
-
-label {
-  display: block;
-
-  margin-bottom: 8px;
-
-  font-size: 14px;
-
-  font-weight: 600;
 }
 
 input,
@@ -720,180 +32,543 @@ button {
   font: inherit;
 }
 
+button {
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+:where(input, textarea, button, a, .carousel-viewport):focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+
+h2 {
+  margin: 0;
+  color: var(--blue-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.section-eyebrow {
+  margin: 0 0 12px;
+  color: var(--blue-dark);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 650px;
+  max-height: 1000px;
+  overflow: hidden;
+  background: #1d252a;
+}
+
+.hero-photo,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-photo {
+  object-fit: cover;
+  object-position: center 36%;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgb(15 25 32 / 6%),
+    rgb(15 25 32 / 3%) 35%,
+    rgb(15 25 32 / 12%) 55%,
+    rgb(15 25 32 / 58%)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 60px 30px 65px;
+  color: white;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  margin: 0 0 14px;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 6vw, 86px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.ampersand {
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.hero-date {
+  margin: 23px 0 0;
+  font-size: 13px;
+  letter-spacing: 6px;
+}
+
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 36px;
+  color: white;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.scroll-indicator .arrow {
+  font-size: 22px;
+  animation: arrowMove 2s ease-in-out infinite;
+}
+
+@keyframes arrowMove {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* INTRODUCERE */
+.invitation-section {
+  width: min(calc(100% - 40px), 700px);
+  margin: auto;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.invitation-text {
+  max-width: 540px;
+  margin: 26px auto 32px;
+  color: var(--text-muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+.small-divider {
+  width: 45px;
+  height: 1px;
+  margin: 34px auto;
+  background: var(--blue);
+}
+
+.event-date-large {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* APUS */
+.photo-break {
+  position: relative;
+  width: min(calc(100% - 80px), 1250px);
+  height: 720px;
+  margin: 0 auto 60px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.photo-break img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.photo-break-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(15 25 32 / 5%),
+    rgb(15 25 32 / 12%) 55%,
+    rgb(15 25 32 / 38%)
+  );
+}
+
+.photo-break-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 55px;
+  padding: 0 25px;
+  color: white;
+  text-align: center;
+}
+
+.photo-break-text p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 3vw, 42px);
+  font-style: italic;
+  line-height: 1.35;
+}
+
+/* DETALII ȘI HARTĂ */
+.event-details {
+  padding: 40px 24px;
+  background: var(--background-soft);
+}
+
+.event-details > h2 {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.event-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 36px;
+  width: min(100%, 1050px);
+  margin: auto;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail-item {
+  min-width: 0;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.detail-item:nth-child(2) {
+  border-left: 1px solid var(--border);
+}
+
+.detail-location {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.detail-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.detail-item p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+}
+
+.map-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--blue-dark);
+  font-size: 12px;
+  text-underline-offset: 4px;
+}
+
+.event-map {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.event-map iframe {
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 0;
+}
+
+/* SLIDER */
+.story-gallery {
+  width: min(calc(100% - 64px), 1200px);
+  margin: auto;
+  padding: 48px 0 16px;
+}
+
+.gallery-heading {
+  max-width: 650px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.gallery-heading h2 {
+  font-size: clamp(27px, 3vw, 38px);
+}
+
+.photo-carousel {
+  position: relative;
+  isolation: isolate;
+}
+
+.carousel-viewport {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--background-soft);
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+  user-select: none;
+}
+
+.carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.carousel-slide img {
+  display: block;
+  width: 100%;
+  height: clamp(460px, 65svh, 720px);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.carousel-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.carousel-viewport.is-dragging .carousel-track {
+  transition: none;
+}
+
+/* Săgețile sunt deasupra imaginilor și primesc click-ul. */
+.slider-arrow {
+  position: absolute;
+  z-index: 5;
+  top: calc((100% - 44px) / 2);
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 90%);
+  color: var(--blue-dark);
+  box-shadow: 0 3px 16px rgb(20 40 55 / 12%);
+  pointer-events: auto;
+}
+
+.slider-arrow:hover {
+  background: var(--white);
+}
+
+.slider-arrow-prev {
+  left: 18px;
+}
+
+.slider-arrow-next {
+  right: 18px;
+}
+
+.slider-arrow svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  height: 44px;
+}
+
+.slider-dots button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+}
+
+.slider-dots button::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.slider-dots button[aria-current="true"]::before {
+  background: var(--blue-dark);
+}
+
+/* RSVP */
+.rsvp {
+  width: min(calc(100% - 40px), 580px);
+  margin: 12px auto 70px;
+  padding: 48px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgb(54 92 122 / 8%);
+}
+
+.rsvp > h2,
+.rsvp-description {
+  text-align: center;
+}
+
+.rsvp-description {
+  margin: 12px 0 35px;
+  color: var(--text-muted);
+}
+
+.form-field {
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 input,
 textarea {
   width: 100%;
-
-  padding:
-    13px
-    15px;
-
+  padding: 13px 15px;
   background: #fbfdff;
-
   color: var(--text);
-
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-radius: 10px;
-
-  transition:
-    border-color
-    0.2s ease;
-}
-
-input:hover,
-textarea:hover {
-  border-color: var(--blue);
 }
 
 input::placeholder,
 textarea::placeholder {
   color: var(--text-muted);
-
   opacity: 1;
 }
 
 textarea {
   min-height: 120px;
-
   resize: vertical;
 }
 
-input:focus-visible,
-textarea:focus-visible,
-button:focus-visible {
-  outline:
-    3px solid
-    var(--blue);
-
-  outline-offset: 3px;
-}
-
-
-/* ========================================
-   NUMĂR ADULȚI
-======================================== */
-
 .number-stepper {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
 }
 
 .number-stepper button {
   display: grid;
-
   place-items: center;
-
-  flex:
-    0 0
-    46px;
-
+  flex: 0 0 46px;
   width: 46px;
   height: 46px;
-
+  min-height: 46px;
   padding: 0;
-
   background: var(--blue-light);
-
   color: var(--blue-dark);
-
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-radius: 50%;
-
   font-size: 24px;
 }
 
 .number-stepper input {
   width: 72px;
   height: 46px;
-
   padding: 0;
-
   text-align: center;
-
   font-weight: 600;
-
   appearance: textfield;
-
   -moz-appearance: textfield;
 }
 
 .number-stepper input::-webkit-inner-spin-button,
 .number-stepper input::-webkit-outer-spin-button {
   margin: 0;
-
   -webkit-appearance: none;
 }
 
-
-/* ========================================
-   BUTOANE
-======================================== */
-
 .rsvp-actions {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-
   margin-top: 28px;
-}
-
-button {
-  min-height: 48px;
-
-  padding:
-    12px
-    16px;
-
-  border:
-    1px solid
-    transparent;
-
-  border-radius: 10px;
-
-  font-size: 14px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
 }
 
 .button-confirm {
   background: var(--blue-light);
-
   color: var(--blue-dark);
-
   border-color: var(--blue);
 }
 
-.button-confirm:hover:not(:disabled) {
+.button-confirm:hover:not(:disabled),
+.number-stepper button:hover:not(:disabled) {
   background: var(--blue);
-
-  transform: translateY(-1px);
 }
 
 .button-decline {
-  background: var(--white);
-
+  background: white;
   color: var(--text-muted);
-
   border-color: var(--border);
 }
 
@@ -901,29 +576,9 @@ button {
   background: var(--background);
 }
 
-.number-stepper button:hover:not(:disabled) {
-  background: var(--blue);
-}
-
-button:disabled {
-  opacity: 0.55;
-
-  cursor: not-allowed;
-}
-
-
-/* ========================================
-   MESAJ FORMULAR
-======================================== */
-
 #form-message {
-  margin:
-    18px
-    0
-    0;
-
+  margin: 18px 0 0;
   text-align: center;
-
   font-size: 14px;
 }
 
@@ -931,440 +586,149 @@ button:disabled {
   display: none;
 }
 
-
-/* ========================================
-   FOOTER
-======================================== */
-
+/* FOOTER */
 footer {
-  padding:
-    70px
-    20px;
-
+  padding: 55px 20px;
   background: var(--blue-dark);
-
-  color:
-    rgb(255 255 255 / 75%);
-
+  color: rgb(255 255 255 / 75%);
   text-align: center;
 }
 
-.footer-names {
-  margin:
-    0
-    0
-    10px;
-
-  color: white;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 28px;
+footer p {
+  margin: 5px 0;
 }
 
-footer p {
-  margin:
-    5px
-    0;
+.footer-names {
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
 }
 
 footer span {
   display: block;
-
   margin-top: 20px;
-
   font-size: 10px;
-
   letter-spacing: 4px;
 }
 
-
-/* ========================================
-   TABLETĂ
-======================================== */
-
+/* TABLETĂ */
 @media (max-width: 800px) {
-
-  .details-grid {
+  .event-layout {
     grid-template-columns: 1fr;
-
-    max-width: 420px;
+    gap: 24px;
+    max-width: 580px;
   }
-
-  .detail-item {
-    padding:
-      25px
-      10px;
-  }
-
-  .detail-item + .detail-item {
-    border-left: 0;
-
-    border-top:
-      1px solid
-      var(--border);
-  }
-
-
-  /* Galerie tabletă */
 
   .story-gallery {
-    width:
-      calc(
-        100% - 40px
-      );
-
-    padding:
-      90px
-      0
-      100px;
+    width: calc(100% - 40px);
   }
 
-  .gallery-layout {
-    gap:
-      30px
-      20px;
+  .carousel-slide img {
+    height: clamp(360px, 55svh, 560px);
   }
-
-  .gallery-photo-1 {
-    height: 520px;
-  }
-
-  .gallery-photo-2 {
-    height: 380px;
-
-    margin-top: 60px;
-  }
-
-  .gallery-photo-3 {
-    height: 380px;
-  }
-
-  .gallery-photo-4 {
-    height: 480px;
-
-    margin-top: 50px;
-  }
-
 }
 
-
-/* ========================================
-   TELEFON
-======================================== */
-
+/* TELEFON */
 @media (max-width: 540px) {
-
-
-  /* HERO */
-
   .hero {
     min-height: 620px;
-
     max-height: none;
   }
 
   .hero-photo {
-    object-position: center center;
+    object-position: center;
   }
 
   .hero-content {
-    padding:
-      35px
-      18px
-      38px;
+    padding: 35px 18px 38px;
   }
 
   .hero-eyebrow {
     font-size: 9px;
-
     letter-spacing: 3px;
   }
 
   .hero h1 {
-    font-size:
-      clamp(
-        43px,
-        13vw,
-        58px
-      );
-
+    font-size: clamp(43px, 13vw, 58px);
     letter-spacing: -1px;
   }
 
   .ampersand {
-    margin:
-      0
-      3px;
+    margin: 0 3px;
   }
 
   .hero-date {
-    margin-top: 18px;
-
     font-size: 11px;
-
     letter-spacing: 4px;
   }
 
-  .scroll-indicator {
-    margin-top: 27px;
-  }
-
-
-  /* INTRODUCERE */
-
   .invitation-section {
-    width:
-      calc(
-        100% - 28px
-      );
-
-    padding:
-      75px
-      10px;
+    width: calc(100% - 28px);
+    padding: 70px 10px;
   }
 
   .invitation-text {
     font-size: 17px;
   }
 
-
-  /* FOTOGRAFIA DE LA APUS */
-
   .photo-break {
-    width:
-      calc(
-        100% - 28px
-      );
-
+    width: calc(100% - 28px);
     height: 620px;
-
-    margin-bottom: 70px;
-
-    border-radius: 3px;
+    margin-bottom: 40px;
   }
 
   .photo-break img {
-    object-position: center center;
+    object-position: center;
   }
 
   .photo-break-text {
     bottom: 35px;
-
-    padding:
-      0
-      20px;
+    padding: 0 20px;
   }
 
   .photo-break-text p {
     font-size: 26px;
   }
 
-
-  /* DETALII EVENIMENT */
-
   .event-details {
-    padding:
-      65px
-      24px;
+    padding: 32px 20px;
   }
 
-  .event-details > h2 {
-    margin-bottom: 30px;
+  .event-map iframe {
+    height: 210px;
   }
-
-
-  /* ========================================
-     GALERIE - TELEFON
-  ======================================== */
 
   .story-gallery {
-    width: 100%;
-
-    padding:
-      75px
-      0
-      90px;
+    width: calc(100% - 28px);
+    padding: 32px 0 8px;
   }
-
 
   .gallery-heading {
-    width:
-      calc(
-        100% - 48px
-      );
-
-    margin:
-      0
-      auto
-      45px;
-
-    text-align: center;
+    margin-bottom: 20px;
   }
 
-
-  .gallery-heading h2 {
-    font-size: 30px;
-
-    line-height: 1.25;
+  .carousel-slide img {
+    height: clamp(280px, 105vw, 440px);
   }
 
-
-  .gallery-layout {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    width: 100%;
+  .slider-arrow {
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
   }
 
-
-  /*
-    Resetăm dimensiunile impuse
-    fotografiilor pe desktop.
-  */
-
-  .gallery-photo,
-  .gallery-photo-1,
-  .gallery-photo-2,
-  .gallery-photo-3,
-  .gallery-photo-4 {
-    width: 100%;
-
-    height: auto;
-
-    margin: 0;
-
-    align-self: auto;
+  .slider-arrow-prev {
+    left: 8px;
   }
 
-
-  /*
-    Pe telefon păstrăm proporțiile
-    originale ale fotografiilor.
-  */
-
-  .gallery-photo img {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    object-fit: contain;
+  .slider-arrow-next {
+    right: 8px;
   }
-
-
-  /* POZA 3 */
-
-  .gallery-photo-1 {
-    width:
-      calc(
-        100% - 28px
-      );
-
-    margin:
-      0
-      auto;
-  }
-
-
-  /* POZA 4 */
-
-  .gallery-photo-2 {
-    width:
-      calc(
-        100% - 56px
-      );
-
-    margin:
-      12px
-      auto
-      0;
-  }
-
-
-  /* TEXT CENTRAL */
-
-  .gallery-quote {
-    width:
-      calc(
-        100% - 48px
-      );
-
-    margin:
-      15px
-      auto;
-
-    padding:
-      45px
-      10px;
-
-    text-align: center;
-  }
-
-
-  .gallery-quote p {
-    margin:
-      22px
-      0;
-
-    font-size: 27px;
-
-    line-height: 1.45;
-  }
-
-
-  /* POZA 5 */
-
-  .gallery-photo-3 {
-    width:
-      calc(
-        100% - 56px
-      );
-
-    margin:
-      0
-      auto
-      12px;
-  }
-
-
-  /* POZA 6 */
-
-  .gallery-photo-4 {
-    width:
-      calc(
-        100% - 28px
-      );
-
-    margin:
-      0
-      auto;
-  }
-
-
-  /* RSVP */
 
   .rsvp {
-    width:
-      calc(
-        100% - 28px
-      );
-
-    margin:
-      20px
-      auto
-      60px;
-
-    padding:
-      32px
-      20px;
-
+    width: calc(100% - 28px);
+    margin: 12px auto 50px;
+    padding: 32px 20px;
     border-radius: 18px;
   }
 
@@ -1372,13 +736,28 @@ footer span {
     grid-template-columns: 1fr;
   }
 
+  input,
+  textarea {
+    font-size: 16px;
+  }
+}
 
-  /* FOOTER */
+@media (max-height: 500px) and (orientation: landscape) {
+  .carousel-slide img {
+    height: 75svh;
+  }
+}
 
-  footer {
-    padding:
-      55px
-      20px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
+  .carousel-track {
+    transition: none;
+  }
+
+  .scroll-indicator .arrow {
+    animation: none;
+  }
 }
